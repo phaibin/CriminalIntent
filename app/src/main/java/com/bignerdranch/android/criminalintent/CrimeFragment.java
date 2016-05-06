@@ -53,9 +53,7 @@ public class CrimeFragment extends Fragment {
             }
         });
         mDateButton = (Button) v.findViewById(R.id.crime_date);
-        java.text.DateFormat df = DateFormat.getLongDateFormat(getActivity());
-        String dateString = df.format(mCrime.getDate());
-        mDateButton.setText(dateString);
+        mDateButton.setText(mCrime.getDateString());
         mDateButton.setEnabled(false);
         mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

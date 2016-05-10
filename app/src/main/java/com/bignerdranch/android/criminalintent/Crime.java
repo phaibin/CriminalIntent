@@ -1,7 +1,5 @@
 package com.bignerdranch.android.criminalintent;
 
-import android.text.format.DateFormat;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,9 +45,11 @@ public class Crime {
     }
 
     public String getDateString() {
-        java.text.DateFormat df = DateFormat.getLongDateFormat(MyApplication.getAppContext());
-        String dateString = df.format(mDate);
-        return dateString;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
+        return dateFormat.format(mDate);
+//        java.text.DateFormat df = DateFormat.getLongDateFormat(MyApplication.getAppContext());
+//        String dateString = df.format(mDate);
+//        return dateString;
     }
 
     public Crime() {

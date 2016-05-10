@@ -10,9 +10,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
+
 import java.util.List;
 import java.util.UUID;
-import java.util.stream;
 
 /**
  * Created by leon on 5/6/16.
@@ -46,16 +48,10 @@ public class CrimePagerActivity extends FragmentActivity {
             }
         });
 
-        java.util.st
-        List<UUID> ids = mCrimes.str
-        Crime crime = CrimeLab.get(this).getCrime(crimeId);
-        int index = mCrimes.indexOf(crime);
-        for (int i = 0; i < mCrimes.size(); i++) {
-            if (mCrimes.get(i).getId().equals(crimeId)) {
-                mViewPager.setCurrentItem(i);
-                break;
-            }
-        }
+        List<UUID> ids = Stream.of(mCrimes).map(Crime::getId)
+                .collect(Collectors.toList());
+        int index = ids.indexOf(crimeId);
+        mViewPager.setCurrentItem(index);
     }
 
     public static Intent newIntent(Context packageContext, UUID crimeId) {

@@ -1,6 +1,5 @@
 package com.bignerdranch.android.criminalintent;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -53,12 +52,14 @@ public class Crime {
     }
 
     public Crime() {
+        mTitle = "New Criminal";
         mId = UUID.randomUUID();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            mDate = dateFormat.parse("1979-02-07");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        mDate = new Date();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        try {
+//            mDate = dateFormat.parse("1979-02-07");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
     }
 }

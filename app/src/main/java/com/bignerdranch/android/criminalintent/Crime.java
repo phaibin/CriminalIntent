@@ -52,7 +52,7 @@ public class Crime {
     }
 
     public Crime() {
-        mTitle = "New Criminal";
+//        mTitle = "New Criminal";
         mId = UUID.randomUUID();
         mDate = new Date();
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

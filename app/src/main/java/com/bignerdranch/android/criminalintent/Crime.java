@@ -70,6 +70,10 @@ public class Crime {
 //        return dateString;
     }
 
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
     public Crime() {
 //        mTitle = "New Criminal";
         mId = UUID.randomUUID();

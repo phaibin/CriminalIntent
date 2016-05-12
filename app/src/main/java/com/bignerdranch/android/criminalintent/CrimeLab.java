@@ -1,7 +1,9 @@
 package com.bignerdranch.android.criminalintent;
 
 import android.content.Context;
+import android.os.Environment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -12,6 +14,7 @@ import java.util.UUID;
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
     private List<Crime> mCrimes;
+    private  Context mContext;
 
     public static CrimeLab get(Context context) {
         if (sCrimeLab == null) {
@@ -21,6 +24,7 @@ public class CrimeLab {
     }
 
     private CrimeLab(Context context) {
+        mContext = context;
         mCrimes = new ArrayList<>();
 //        for (int i = 0; i < 100; i++) {
 //            Crime crime = new Crime();
@@ -28,6 +32,14 @@ public class CrimeLab {
 //            crime.setSolved(i % 2 == 0);
 //            mCrimes.add(crime);
 //        }
+    }
+
+    public File getPhotoFile(Crime crime) {
+        File externalFilesDir = mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if (externalFilesDir == null) {
+            return null;
+        }
+        return new File(externalFilesDir, crime.getPhotoFilename());
     }
 
     public List<Crime> getCrimes() {
